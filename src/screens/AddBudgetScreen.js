@@ -165,7 +165,7 @@ const AddBudgetScreen = ({navigation}) => {
             labelStyle={{width: '100%'}}
             onPress={handleAddBudget}
             disabled={!isFormValid()}>
-            Add Budget
+            Save
           </Button>
         </View>
       </ScrollView>
@@ -200,6 +200,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
+    borderRadius: 6,
   },
   errorHelpText: {
     color: MD3Colors.error50,

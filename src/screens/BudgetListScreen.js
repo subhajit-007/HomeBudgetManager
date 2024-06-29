@@ -81,6 +81,25 @@ const BudgetListScreen = ({navigation}) => {
     );
   };
 
+  const renderNoDataFound = () => {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: 100,
+        }}>
+        <Text style={{color: '#847f7f', fontSize: 20}}>
+          No Budgets found !
+        </Text>
+        <Text style={{color: '#847f7f', fontSize: 14}}>
+          Please add new budgets
+        </Text>
+      </View>
+    );
+  };
+
   return (
     <>
       {/* app header */}
@@ -91,6 +110,7 @@ const BudgetListScreen = ({navigation}) => {
         <FlatList
           data={budgets}
           renderItem={renderItem}
+          ListEmptyComponent={renderNoDataFound}
           keyExtractor={item => item.id}
         />
         <FAB
