@@ -7,26 +7,37 @@ import {SCREEN_OPTIONS} from './NavConfig';
 import {Provider} from 'react-redux';
 import store from '../store/store';
 import AddBudgetScreen from '../screens/AddBudgetScreen';
+import {MD3LightTheme as DefaultTheme, PaperProvider} from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
+
+// Theme for react-native-paper
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+  },
+};
 
 const MainNavigation = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen
-            name="Home"
-            component={BudgetListScreen}
-            options={SCREEN_OPTIONS}
-          />
-          <Stack.Screen
-            name="AddBudget"
-            component={AddBudgetScreen}
-            options={SCREEN_OPTIONS}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <PaperProvider theme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen
+              name="Home"
+              component={BudgetListScreen}
+              options={SCREEN_OPTIONS}
+            />
+            <Stack.Screen
+              name="AddBudget"
+              component={AddBudgetScreen}
+              options={SCREEN_OPTIONS}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
     </Provider>
   );
 };
